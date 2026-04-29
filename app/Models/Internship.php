@@ -58,11 +58,6 @@ class Internship extends Model
         return $this->hasMany(Evaluation::class);
     }
 
-    public function reports()
-    {
-        return $this->hasMany(Report::class);
-    }
-
     public function dailyReports()
     {
         return $this->hasMany(DailyReport::class);
