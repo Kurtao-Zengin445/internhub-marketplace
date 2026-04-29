@@ -1,0 +1,1 @@
+@include('intern.reports.form')
