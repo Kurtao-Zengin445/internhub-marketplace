@@ -162,10 +162,10 @@ class Application extends Model
                 CASE
                     WHEN applicants.plan_type = 'premium'
                      AND applicants.premium_until IS NOT NULL
-                     AND applicants.premium_until > NOW()
+                     AND applicants.premium_until > ?
                     THEN 1 ELSE 0
                 END DESC
-            ")
+            ", [now()])
             ->orderByDesc('applications.applied_at')
             ->select('applications.*');
     }
