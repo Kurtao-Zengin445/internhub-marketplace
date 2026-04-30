@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
-@section('title', 'Buka Program Magang')
-@section('page-title', 'Buka Program Magang Baru')
-@section('page-subtitle', 'Isi detail program magang yang ingin Anda buka')
+@section('title', 'Buka Lowongan Magang')
+@section('page-title', 'Buka Lowongan Magang Baru')
+@section('page-subtitle', 'Isi detail lowongan magang yang ingin Anda publikasikan')
 
 @push('styles')
 <style>

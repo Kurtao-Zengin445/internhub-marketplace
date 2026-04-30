@@ -780,7 +780,7 @@
 
     <div class="topbar-actions">
         {{-- Notifikasi --}}
-        <a href="#" class="topbar-icon-btn" title="Notifikasi">
+        <a href="{{ route('notifications.index') }}" class="topbar-icon-btn" title="Notifikasi">
             <i class="bi bi-bell"></i>
             @php $unread = auth()->user()->notifications()->where('is_read', false)->count(); @endphp
             @if($unread > 0)

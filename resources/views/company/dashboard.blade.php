@@ -15,7 +15,7 @@
             </div>
             <div>
                 <div class="stat-value">{{ $stats['total_programs'] }}</div>
-                <div class="stat-label">Total Program</div>
+                <div class="stat-label">Total Lowongan</div>
             </div>
         </div>
     </div>
@@ -26,7 +26,7 @@
             </div>
             <div>
                 <div class="stat-value">{{ $stats['open_programs'] }}</div>
-                <div class="stat-label">Program Aktif</div>
+                <div class="stat-label">Lowongan Aktif</div>
             </div>
         </div>
     </div>
@@ -160,7 +160,7 @@
             <div class="card-header"><i class="bi bi-lightning-charge-fill text-warning me-2"></i>Aksi Cepat</div>
             <div class="card-body d-flex flex-column gap-2">
                 <a href="{{ route('company.programs.create') }}" class="btn btn-primary">
-                    <i class="bi bi-plus-circle me-2"></i>Buka Program Magang Baru
+                    <i class="bi bi-plus-circle me-2"></i>Buka Lowongan Magang Baru
                 </a>
                 <a href="{{ route('company.profile.edit') }}" class="btn btn-outline-primary mt-1">
                     <i class="bi bi-building-check me-2"></i>Profil & Verifikasi Company

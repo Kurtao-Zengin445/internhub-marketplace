@@ -1,7 +1,7 @@
 @props([
     'theme' => 'light',
     'size' => 'md',
-    'subtitle' => 'Sistem Manajemen Magang',
+    'subtitle' => 'Marketplace Magang',
 ])
 
 @php

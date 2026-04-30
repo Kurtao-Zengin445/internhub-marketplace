@@ -267,7 +267,7 @@
     <div style="font-size:48px;margin-bottom:12px">🚀</div>
     <h5 style="font-weight:700;color:#0f172a">Belum ada magang aktif</h5>
     <p style="color:#64748b;font-size:14px;margin-bottom:20px">
-        Temukan program magang yang sesuai dengan bidang keahlianmu dan ajukan lamaran sekarang!
+        Temukan lowongan magang yang sesuai dengan bidang keahlianmu dan ajukan lamaran sekarang!
     </p>
     <a href="{{ route('intern.applications.create') }}" class="btn btn-primary px-4">
         <i class="bi bi-send-fill me-2"></i>Jelajahi Lowongan

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Edit Program')
-@section('page-title', 'Edit Program')
+@section('title', 'Edit Lowongan')
+@section('page-title', 'Edit Lowongan')
 @section('page-subtitle', $program->title)
 
 @push('styles')

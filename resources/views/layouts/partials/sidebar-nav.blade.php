@@ -19,7 +19,7 @@
     </a>
 @endif
 
-{{-- ── SISWA ───────────────────────────────────── --}}
+{{-- Intern --}}
 @if(in_array($role, ['intern', 'user']))
     <span class="nav-section-label">Utama</span>
     <a href="{{ route('intern.dashboard') }}" class="sidebar-link {{ request()->routeIs('intern.dashboard') ? 'active' : '' }}">
@@ -52,8 +52,7 @@
     </a>
 @endif
 
-{{-- ── SEKOLAH ─────────────────────────────────── --}}
-{{-- ── PEMBIMBING ──────────────────────────────── --}}
+{{-- Supervisor --}}
 @if($role === 'supervisor')
     <span class="nav-section-label">Utama</span>
     <a href="{{ route('supervisor.dashboard') }}" class="sidebar-link {{ request()->routeIs('supervisor.dashboard') ? 'active' : '' }}">
@@ -83,16 +82,16 @@
     </a>
 @endif
 
-{{-- ── PERUSAHAAN ──────────────────────────────── --}}
+{{-- Company --}}
 @if($role === 'company')
     <span class="nav-section-label">Utama</span>
     <a href="{{ route('company.dashboard') }}" class="sidebar-link {{ request()->routeIs('company.dashboard') ? 'active' : '' }}">
         <i class="bi bi-grid-1x2-fill"></i> Dashboard
     </a>
 
-    <span class="nav-section-label">Program Magang</span>
+    <span class="nav-section-label">Lowongan</span>
     <a href="{{ route('company.programs.index') }}" class="sidebar-link {{ request()->routeIs('company.programs.*') ? 'active' : '' }}">
-        <i class="bi bi-briefcase-fill"></i> Program Magang
+        <i class="bi bi-briefcase-fill"></i> Lowongan Magang
     </a>
     <a href="{{ route('company.applications.index') }}" class="sidebar-link {{ request()->routeIs('company.applications.*') ? 'active' : '' }}">
         <i class="bi bi-inbox-fill"></i> Lamaran Masuk

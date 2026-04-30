@@ -7,12 +7,12 @@
     <div class="card mb-3">
         <div class="card-header d-flex align-items-center gap-2">
             <a href="{{ route('company.programs.index') }}" class="btn btn-sm btn-outline-secondary py-0 px-2"><i class="bi bi-arrow-left"></i></a>
-            <i class="bi bi-briefcase-fill text-warning me-1"></i>Informasi Program
+            <i class="bi bi-briefcase-fill text-warning me-1"></i>Informasi Lowongan
         </div>
         <div class="card-body" style="padding:24px">
             <div class="row g-3">
                 <div class="col-12">
-                    <label class="form-label fw-semibold" style="font-size:13.5px">Judul Program <span class="text-danger">*</span></label>
+                    <label class="form-label fw-semibold" style="font-size:13.5px">Judul Lowongan <span class="text-danger">*</span></label>
                     <input type="text" name="title" value="{{ old('title', $program->title ?? '') }}" class="form-control @error('title') is-invalid @enderror" placeholder="Contoh: Magang Web Developer, Magang Administrasi Keuangan">
                     @error('title') <div class="invalid-feedback">{{ $message }}</div> @enderror
                 </div>
@@ -26,13 +26,13 @@
                     @error('quota') <div class="invalid-feedback">{{ $message }}</div> @enderror
                 </div>
                 <div class="col-12">
-                    <label class="form-label fw-semibold" style="font-size:13.5px">Deskripsi Program <span class="text-danger">*</span></label>
-                    <textarea name="description" rows="5" class="form-control @error('description') is-invalid @enderror" placeholder="Jelaskan gambaran program magang ini: tugas yang akan dikerjakan, lingkungan kerja, dan apa yang akan dipelajari peserta.">{{ old('description', $program->description ?? '') }}</textarea>
+                    <label class="form-label fw-semibold" style="font-size:13.5px">Deskripsi Lowongan <span class="text-danger">*</span></label>
+                    <textarea name="description" rows="5" class="form-control @error('description') is-invalid @enderror" placeholder="Jelaskan gambaran lowongan magang ini: tugas yang akan dikerjakan, lingkungan kerja, dan apa yang akan dipelajari peserta.">{{ old('description', $program->description ?? '') }}</textarea>
                     @error('description') <div class="invalid-feedback">{{ $message }}</div> @enderror
                 </div>
                 <div class="col-12">
                     <label class="form-label fw-semibold" style="font-size:13.5px">Persyaratan Pendaftar</label>
-                    <textarea name="requirements" rows="4" class="form-control" placeholder="Contoh:&#10;- MahaIntern atau pelamar tingkat akhir dipersilakan&#10;- Memahami dasar HTML, CSS, JavaScript&#10;- Memiliki laptop pribadi&#10;- Bersedia hadir full-time">{{ old('requirements', $program->requirements ?? '') }}</textarea>
+                    <textarea name="requirements" rows="4" class="form-control" placeholder="Contoh:&#10;- Pelamar tingkat akhir dipersilakan&#10;- Memahami dasar HTML, CSS, JavaScript&#10;- Memiliki laptop pribadi&#10;- Bersedia hadir full-time">{{ old('requirements', $program->requirements ?? '') }}</textarea>
                     <div class="form-text">Gunakan format daftar untuk memudahkan pembacaan.</div>
                 </div>
             </div>
@@ -97,7 +97,7 @@
     </div>
 
     <div class="d-flex gap-2">
-        <button type="submit" class="btn btn-primary px-4"><i class="bi bi-check-lg me-2"></i>{{ isset($program) ? 'Simpan Perubahan' : 'Buat Program' }}</button>
+        <button type="submit" class="btn btn-primary px-4"><i class="bi bi-check-lg me-2"></i>{{ isset($program) ? 'Simpan Perubahan' : 'Buat Lowongan' }}</button>
         <a href="{{ route('company.programs.index') }}" class="btn btn-outline-secondary">Batal</a>
     </div>
 </form>

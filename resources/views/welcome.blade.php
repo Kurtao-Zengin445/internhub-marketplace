@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>InternHub - Sistem Manajemen Magang</title>
+    <title>InternHub - Marketplace Magang</title>
     <link rel="icon" type="image/svg+xml" href="{{ asset('internhub-favicon.svg') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,7 +33,7 @@
             --surface: rgba(15, 23, 42, .82);
             --surface-strong: #0b1120;
             --surface-soft: rgba(255, 255, 255, .05);
-            --font-display: 'Monserrat', sans-serif;
+            --font-display: 'Syne', sans-serif;
             --font-body: 'Plus Jakarta Sans', sans-serif
         }
 
@@ -826,7 +826,7 @@
             </span>
             <span class="nav-brand-text">
                 <span class="nav-brand-title">Intern<span>Hub</span></span>
-                <span class="nav-brand-subtitle">Sistem Manajemen Magang</span>
+                <span class="nav-brand-subtitle">Marketplace Magang</span>
             </span>
         </a>
         <button id="menuToggle" aria-label="Buka menu">

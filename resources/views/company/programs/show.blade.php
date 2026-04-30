@@ -2,7 +2,7 @@
 
 @section('title', $program->title)
 @section('page-title', $program->title)
-@section('page-subtitle', $program->company->name . ' - ' . ($program->field ?? 'Program Magang'))
+@section('page-subtitle', $program->company->name . ' - ' . ($program->field ?? 'Lowongan Magang'))
 
 @section('content')
 <div class="row g-3">

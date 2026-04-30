@@ -47,7 +47,7 @@
         </div>
         
         <div class="footer">
-            <p>Ini adalah pesan otomatis dari <strong>Sistem Manajemen Magang</strong></p>
+            <p>Ini adalah pesan otomatis dari <strong>InternHub Marketplace Magang</strong></p>
             <p>© {{ date('Y') }} {{ config('app.name') }}. All rights reserved.</p>
         </div>
     </div>

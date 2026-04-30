@@ -1,15 +1,15 @@
 @extends('layouts.app')
 
-@section('title', 'Program Magang')
-@section('page-title', 'Program Magang')
-@section('page-subtitle', 'Kelola program magang perusahaan Anda')
+@section('title', 'Lowongan Magang')
+@section('page-title', 'Lowongan Magang')
+@section('page-subtitle', 'Kelola lowongan magang perusahaan Anda')
 
 @section('content')
 <div class="row g-3 mb-4">
     @php
         $company = auth()->user()->company;
         $counts = [
-            ['label' => 'Total Program', 'val' => $company->programs()->count(), 'bg' => '#eff6ff', 'color' => '#1a56db', 'icon' => 'briefcase-fill'],
+            ['label' => 'Total Lowongan', 'val' => $company->programs()->count(), 'bg' => '#eff6ff', 'color' => '#1a56db', 'icon' => 'briefcase-fill'],
             ['label' => 'Sedang Buka', 'val' => $company->programs()->where('status', 'open')->count(), 'bg' => '#d1fae5', 'color' => '#065f46', 'icon' => 'megaphone-fill'],
             ['label' => 'Lamaran Masuk', 'val' => \App\Models\Application::whereHas('program', fn($q) => $q->where('company_id', $company->id))->count(), 'bg' => '#fef3c7', 'color' => '#92400e', 'icon' => 'inbox-fill'],
             ['label' => 'Sudah Selesai', 'val' => $company->programs()->where('status', 'completed')->count(), 'bg' => '#f1f5f9', 'color' => '#475569', 'icon' => 'patch-check-fill'],
@@ -38,7 +38,7 @@
                 @endforeach
             </select>
         </form>
-        <a href="{{ route('company.programs.create') }}" class="btn btn-primary ms-auto"><i class="bi bi-plus-lg me-2"></i>Buka Program Baru</a>
+        <a href="{{ route('company.programs.create') }}" class="btn btn-primary ms-auto"><i class="bi bi-plus-lg me-2"></i>Buka Lowongan Baru</a>
     </div>
 </div>
 
@@ -104,9 +104,9 @@
     <div class="col-12">
         <div class="card text-center" style="padding:60px">
             <div style="font-size:48px;margin-bottom:12px"><i class="bi bi-card-checklist"></i></div>
-            <h5 style="font-weight:700;color:#0f172a">Belum ada program magang</h5>
+            <h5 style="font-weight:700;color:#0f172a">Belum ada lowongan magang</h5>
             <p style="color:#64748b;font-size:14px;margin-bottom:20px">Buka lowongan magang untuk mulai menerima pelamar.</p>
-            <a href="{{ route('company.programs.create') }}" class="btn btn-primary mx-auto" style="max-width:220px"><i class="bi bi-plus-lg me-2"></i>Buka Program Pertama</a>
+            <a href="{{ route('company.programs.create') }}" class="btn btn-primary mx-auto" style="max-width:220px"><i class="bi bi-plus-lg me-2"></i>Buka Lowongan Pertama</a>
         </div>
     </div>
     @endforelse

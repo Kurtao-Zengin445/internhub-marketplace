@@ -8,7 +8,7 @@
             Selamat Datang Kembali
         </h2>
         <p class="mt-2 text-sm leading-6 text-slate-600">
-            Masuk ke akun Anda untuk melanjutkan pengelolaan program magang.
+            Masuk ke akun Anda untuk melanjutkan aktivitas marketplace magang.
         </p>
     </div>
 

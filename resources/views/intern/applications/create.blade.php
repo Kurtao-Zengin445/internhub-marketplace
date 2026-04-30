@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', $program ? 'Lamar Program Magang' : 'Cari Program Magang')
-@section('page-title', $program ? 'Lamar Program Magang' : 'Cari Program Magang')
+@section('title', $program ? 'Lamar Lowongan Magang' : 'Cari Lowongan Magang')
+@section('page-title', $program ? 'Lamar Lowongan Magang' : 'Cari Lowongan Magang')
 @section('page-subtitle', $program ? $program->company->name . ' - ' . $program->title : 'Temukan lowongan dari company yang sudah diverifikasi')
 
 @push('styles')
@@ -74,8 +74,8 @@
         @empty
         <div class="card text-center" style="padding:60px">
             <div style="font-size:48px;margin-bottom:12px"><i class="bi bi-briefcase"></i></div>
-            <h5 style="font-weight:700;color:#0f172a">Tidak ada program yang tersedia</h5>
-            <p style="color:#64748b;font-size:14px">Semua program magang yang tersedia sudah penuh atau belum ada yang membuka. Coba cek lagi nanti.</p>
+            <h5 style="font-weight:700;color:#0f172a">Tidak ada lowongan yang tersedia</h5>
+            <p style="color:#64748b;font-size:14px">Semua lowongan magang yang tersedia sudah penuh atau belum ada yang membuka. Coba cek lagi nanti.</p>
         </div>
         @endforelse
     </div>
@@ -150,7 +150,7 @@ Saya tertarik mengikuti program magang ini karena sesuai dengan minat saya di bi
                 <div class="p-3 rounded-3 mb-4" style="background:#fffbeb;border:1px solid #fde68a;font-size:13px;color:#92400e"><i class="bi bi-exclamation-triangle me-2"></i>Pastikan data yang Anda masukkan sudah benar. Lamaran yang sudah dikirim tidak dapat diedit, hanya bisa dibatalkan selama masih berstatus <strong>Menunggu</strong>.</div>
                 <div class="d-flex gap-2 flex-wrap">
                     <button type="submit" class="btn btn-primary px-4" onclick="return validateMotivation()"><i class="bi bi-send-fill me-2"></i>Kirim Lamaran</button>
-                    <a href="{{ route('intern.applications.create') }}" class="btn btn-outline-secondary">Pilih Program Lain</a>
+                    <a href="{{ route('intern.applications.create') }}" class="btn btn-outline-secondary">Pilih Lowongan Lain</a>
                 </div>
             </form>
         </div>
@@ -159,7 +159,7 @@ Saya tertarik mengikuti program magang ini karena sesuai dengan minat saya di bi
 
 <div class="col-xl-4 d-flex flex-column gap-3">
     <div class="card">
-        <div class="card-header"><i class="bi bi-briefcase-fill text-warning me-2"></i>Detail Program</div>
+        <div class="card-header"><i class="bi bi-briefcase-fill text-warning me-2"></i>Detail Lowongan</div>
         <div class="card-body" style="font-size:13px;padding:16px 20px">
             <div style="font-size:13.5px;color:#1e293b;line-height:1.65;margin-bottom:12px">{{ Str::limit($program->description, 200) }}</div>
             @if($program->requirements)

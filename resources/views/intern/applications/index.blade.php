@@ -7,7 +7,7 @@
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-4">
     <div></div>
-    <a href="{{ route('intern.applications.create') }}" class="btn btn-primary"><i class="bi bi-search me-2"></i>Cari Program Magang</a>
+    <a href="{{ route('intern.applications.create') }}" class="btn btn-primary"><i class="bi bi-search me-2"></i>Cari Lowongan Magang</a>
 </div>
 
 @forelse($applications as $application)
@@ -61,8 +61,8 @@
 <div class="card text-center" style="padding:60px">
     <div style="font-size:48px;margin-bottom:12px"><i class="bi bi-send"></i></div>
     <h5 style="font-weight:700;color:#0f172a">Belum ada lamaran</h5>
-    <p style="color:#64748b;font-size:14px;margin-bottom:20px">Mulai cari program magang yang sesuai dengan bidang keahlianmu.</p>
-    <a href="{{ route('intern.applications.create') }}" class="btn btn-primary mx-auto" style="max-width:220px"><i class="bi bi-search me-2"></i>Cari Program Magang</a>
+    <p style="color:#64748b;font-size:14px;margin-bottom:20px">Mulai cari lowongan magang yang sesuai dengan bidang keahlianmu.</p>
+    <a href="{{ route('intern.applications.create') }}" class="btn btn-primary mx-auto" style="max-width:220px"><i class="bi bi-search me-2"></i>Cari Lowongan</a>
 </div>
 @endforelse
 
