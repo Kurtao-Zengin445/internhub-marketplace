@@ -159,6 +159,21 @@
         <div class="card">
             <div class="card-header"><i class="bi bi-lightning-charge-fill text-warning me-2"></i>Aksi Cepat</div>
             <div class="card-body d-flex flex-column gap-2">
+                @if(!auth()->user()->company?->hasActivePremium())
+                    <form method="POST" action="{{ route('subscriptions.checkout') }}">
+                        @csrf
+                        <input type="hidden" name="target" value="company">
+                        <button type="submit" class="btn btn-warning w-100">
+                            <i class="bi bi-stars me-2"></i>Upgrade Company Premium
+                        </button>
+                    </form>
+                @else
+                    <div class="alert alert-success mb-1 py-2" style="font-size:13px">
+                        <i class="bi bi-patch-check-fill me-2"></i>
+                        Company Premium aktif sampai
+                        {{ auth()->user()->company->premium_until?->format('d M Y') }}
+                    </div>
+                @endif
                 <a href="{{ route('company.programs.create') }}" class="btn btn-primary">
                     <i class="bi bi-plus-circle me-2"></i>Buka Lowongan Magang Baru
                 </a>
