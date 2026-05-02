@@ -14,37 +14,38 @@ use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 
-class ActiveInternDemoSeeder extends Seeder
+class ActivateExistingInternSeeder extends Seeder
 {
     public function run(): void
     {
-        $password = Hash::make('Password1');
+        $internUser = $this->targetInternUser();
 
-        $internUser = User::updateOrCreate(
-            ['email' => 'demo.intern@internhub.test'],
-            [
-                'name' => 'Demo Intern Aktif',
-                'password' => $password,
-                'role' => User::ROLE_INTERN,
-                'is_active' => true,
-                'email_verified_at' => now(),
-            ]
-        );
+        if (!$internUser) {
+            $this->command->error('Tidak ada user role intern. Buat akun intern terlebih dahulu, lalu jalankan seeder ini lagi.');
+            return;
+        }
+
+        $internUser->update([
+            'role' => User::ROLE_INTERN,
+            'is_active' => true,
+            'email_verified_at' => $internUser->email_verified_at ?? now(),
+        ]);
 
         Intern::updateOrCreate(
             ['user_id' => $internUser->id],
             [
-                'nisn' => 'DEMO20260502',
-                'nim' => null,
+                'nisn' => 'ACTIVE-' . str_pad((string) $internUser->id, 6, '0', STR_PAD_LEFT),
                 'institution' => 'InternHub Demo',
                 'education_level' => 'Umum',
-                'major' => 'Web Development',
+                'major' => $internUser->headline ?: 'Web Development',
                 'phone' => '081200000001',
                 'address' => 'Jakarta',
                 'date_of_birth' => '2004-05-02',
                 'gender' => 'male',
             ]
         );
+
+        $password = Hash::make('Password1');
 
         $companyUser = User::updateOrCreate(
             ['email' => 'demo.company@internhub.test'],
@@ -68,7 +69,7 @@ class ActiveInternDemoSeeder extends Seeder
                 'contact_person_phone' => '081200000002',
                 'description' => 'Perusahaan demo untuk mencoba presensi, laporan harian, dan evaluasi magang.',
                 'industry' => 'Teknologi Informasi',
-                'website' => 'https://internhub-marketplace-production.up.railway.app',
+                'website' => config('app.url'),
                 'is_verified' => true,
                 'verified_at' => now(),
                 'latitude' => -6.20000000,
@@ -103,8 +104,8 @@ class ActiveInternDemoSeeder extends Seeder
                 'title' => 'Demo Magang Aktif Hari Ini',
             ],
             [
-                'description' => 'Lowongan demo aktif agar intern bisa mencoba presensi GPS/kamera dan membuat laporan harian hari ini.',
-                'requirements' => "- Akun demo intern\n- Siap mencoba presensi dan laporan harian",
+                'description' => 'Lowongan demo aktif agar intern existing bisa mencoba presensi GPS/kamera dan membuat laporan harian hari ini.',
+                'requirements' => "- User role intern existing\n- Siap mencoba presensi dan laporan harian",
                 'quota' => 10,
                 'field' => 'Web Development',
                 'start_date' => now()->subDays(7)->toDateString(),
@@ -123,10 +124,10 @@ class ActiveInternDemoSeeder extends Seeder
                 'internship_program_id' => $program->id,
             ],
             [
-                'motivation_letter' => 'Saya ingin mencoba alur demo magang aktif di InternHub untuk presensi dan laporan harian.',
+                'motivation_letter' => 'Lamaran demo untuk mengaktifkan presensi dan laporan harian pada user intern existing.',
                 'cv_file' => null,
                 'status' => Application::STATUS_ACCEPTED,
-                'status_note' => 'Diterima otomatis untuk demo.',
+                'status_note' => 'Diterima otomatis untuk demo presensi dan laporan.',
                 'rejection_reason' => null,
                 'applied_at' => now()->subDays(2),
                 'reviewed_at' => now()->subDay(),
@@ -141,7 +142,7 @@ class ActiveInternDemoSeeder extends Seeder
                 'start_date' => now()->subDays(7)->toDateString(),
                 'end_date' => now()->addDays(30)->toDateString(),
                 'status' => Internship::STATUS_ACTIVE,
-                'notes' => 'Internship aktif untuk demo presensi dan laporan hari ini.',
+                'notes' => 'Internship aktif untuk presensi dan laporan hari ini.',
             ]
         );
 
@@ -153,7 +154,24 @@ class ActiveInternDemoSeeder extends Seeder
             ->whereDate('report_date', today())
             ->delete();
 
-        $this->command->info('  ActiveInternDemoSeeder: demo intern aktif siap untuk presensi dan laporan hari ini.');
-        $this->command->info('  Login intern demo: demo.intern@internhub.test / Password1');
+        $this->command->info("  ActivateExistingInternSeeder: {$internUser->email} sekarang punya internship aktif.");
+        $this->command->info('  Presensi dan laporan hari ini sudah dikosongkan agar bisa dicoba.');
+    }
+
+    private function targetInternUser(): ?User
+    {
+        $email = env('ACTIVE_INTERN_EMAIL');
+
+        if ($email) {
+            return User::where('email', $email)
+                ->whereIn('role', [User::ROLE_INTERN, User::ROLE_USER])
+                ->first();
+        }
+
+        return User::whereIn('role', [User::ROLE_INTERN, User::ROLE_USER])
+            ->where('is_active', true)
+            ->where('email', '!=', 'demo.intern@internhub.test')
+            ->oldest('id')
+            ->first();
     }
 }
