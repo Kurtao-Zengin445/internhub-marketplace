@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             AttendanceSeeder::class,
             EvaluationSeeder::class,
             DocumentSeeder::class,
+            ActiveInternDemoSeeder::class,
         ]);
 
         $this->command->info('Database seeding selesai.');
